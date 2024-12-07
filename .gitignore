@@ -5,3 +5,5 @@
 /sampleproject/obj
 *.cache
 /sampleproject/obj/Debug/net5.0
+sampleproject/obj/Debug/net5.0/sampleproject.AssemblyInfo.cs
+sampleproject/obj/Debug/net5.0/sampleproject.AssemblyInfoInputs.cache
