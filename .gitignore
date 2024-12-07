@@ -3,3 +3,5 @@
 /sampleproject/bin
 /sampleproject/bin/Debug
 /sampleproject/obj
+*.cache
+/sampleproject/obj/Debug/net5.0
