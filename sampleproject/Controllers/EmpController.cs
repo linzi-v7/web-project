@@ -122,5 +122,16 @@ namespace sampleproject.Controllers
 
             return View(employee);
         }
+
+        [HttpGet]
+        public IActionResult Search(string searchTerm)
+        {
+            var employees = context.employees
+                .Where(e => string.IsNullOrEmpty(searchTerm) || e.Name.Contains(searchTerm))
+                .ToList();
+
+            return PartialView("_EmployeeList", employees); // Returns a partial view with the filtered employees
+        }
+
     }
 }

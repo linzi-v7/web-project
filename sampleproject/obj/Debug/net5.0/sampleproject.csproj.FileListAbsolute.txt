@@ -469,3 +469,5 @@ C:\Users\faris\Documents\Web Project\web-project\sampleproject\obj\Debug\net5.0\
 C:\Users\faris\Documents\Web Project\web-project\sampleproject\obj\Debug\net5.0\sampleproject.pdb
 C:\Users\faris\Documents\Web Project\web-project\sampleproject\obj\Debug\net5.0\sampleproject.genruntimeconfig.cache
 C:\Users\faris\Documents\Web Project\web-project\sampleproject\obj\Debug\net5.0\ref\sampleproject.dll
+C:\Users\faris\Documents\Web Project\web-project\sampleproject\obj\Debug\net5.0\Razor\Views\Emp\_EmployeeList.cshtml.g.cs
+C:\Users\faris\Documents\Web Project\web-project\sampleproject\obj\Debug\net5.0\Razor\Views\Dep\_DepartmentList.cshtml.g.cs

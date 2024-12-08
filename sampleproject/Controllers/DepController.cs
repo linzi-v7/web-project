@@ -120,5 +120,16 @@ namespace sampleproject.Controllers
 
             return View(department);
         }
+
+        [HttpGet]
+        public IActionResult Search(string searchTerm)
+        {
+            var departments = context.departments
+                .Where(d => string.IsNullOrEmpty(searchTerm) || d.name.Contains(searchTerm))
+                .ToList();
+
+            return PartialView("_DepartmentList", departments); // Use a partial view for dynamic updates
+        }
+
     }
 }

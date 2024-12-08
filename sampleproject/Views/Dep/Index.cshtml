@@ -6,42 +6,66 @@
 
 <h1>Departments List</h1>
 
+<!-- Search Input -->
+<div class="form-group">
+    <input type="text" id="searchBox" class="form-control" placeholder="Search Departments by Name" />
+</div>
+
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.phoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.age)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.phoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.age)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-            </td>
-        </tr>
+
+<!-- Table to Display Departments -->
+<div id="departmentList">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.First().name)</th>
+                <th>@Html.DisplayNameFor(model => model.First().phoneNumber)</th>
+                <th>@Html.DisplayNameFor(model => model.First().age)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.phoneNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => item.age)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.id" class="btn btn-sm btn-info">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Listen for changes in the search box
+            $("#searchBox").on("keyup", function () {
+                var searchTerm = $(this).val();
+
+                // AJAX request to search departments
+                $.ajax({
+                    url: '@Url.Action("Search", "Dep")', // Adjust controller/action as needed
+                    type: 'GET',
+                    data: { searchTerm: searchTerm },
+                    success: function (result) {
+                        // Update the table with the filtered data
+                        $("#departmentList").html(result);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error: " + error);
+                        alert("An error occurred while searching. Please try again.");
+                    }
+                });
+            });
+        });
+    </script>
 }
-    </tbody>
-</table>

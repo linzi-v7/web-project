@@ -1,43 +1,69 @@
 ﻿@model IEnumerable<sampleproject.Models.Employee>
 
 @{
-    ViewData["Title"] = "Employees Index";
+    ViewData["Title"] = "Employees List";
 }
 
 <h1>Employees List</h1>
 
+<!-- Search bar -->
+<div class="mb-3">
+    <input type="text" id="searchInput" placeholder="Search by name..." class="form-control" />
+</div>
+
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.First().Name)</th>
-            <th>@Html.DisplayNameFor(model => model.First().Salary)</th>
-            <th>@Html.DisplayNameFor(model => model.First().phoneNumber)</th>
-            <th>@Html.DisplayNameFor(model => model.First().age)</th>
-            <th>@Html.DisplayNameFor(model => model.First().image)</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var employee in Model)
-        {
+<!-- Employee List -->
+<div id="employeeList">
+    <table class="table">
+        <thead>
             <tr>
-                <td>@Html.DisplayFor(modelItem => employee.Name)</td>
-                <td>@Html.DisplayFor(modelItem => employee.Salary)</td>
-                <td>@Html.DisplayFor(modelItem => employee.phoneNumber)</td>
-                <td>@Html.DisplayFor(modelItem => employee.age)</td>
-                <td>@Html.DisplayFor(modelItem => employee.image)</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@employee.id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@employee.id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@employee.id">Delete</a>
-                </td>
+                <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Name)</th>
+                <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Salary)</th>
+                <th>@Html.DisplayNameFor(model => model.FirstOrDefault().phoneNumber)</th>
+                <th>@Html.DisplayNameFor(model => model.FirstOrDefault().age)</th>
+                <th>@Html.DisplayNameFor(model => model.FirstOrDefault().image)</th>
+                <th>Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => employee.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => employee.Salary)</td>
+                    <td>@Html.DisplayFor(modelItem => employee.phoneNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => employee.age)</td>
+                    <td>@Html.DisplayFor(modelItem => employee.image)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@employee.id" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-action="Details" asp-route-id="@employee.id" class="btn btn-sm btn-info">Details</a>
+                        <a asp-action="Delete" asp-route-id="@employee.id" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#searchInput').on('input', function () {
+            var searchTerm = $(this).val(); // Get the value from the search input
+            $.ajax({
+                url: '@Url.Action("Search", "Emp")', // Call the Search action in EmpController
+                type: 'GET',
+                data: { searchTerm: searchTerm },
+                success: function (result) {
+                    $('#employeeList').html(result); // Update the employee list dynamically
+                },
+                error: function () {
+                    alert('An error occurred while searching. Please try again.');
+                }
+            });
+        });
+    });
+</script>

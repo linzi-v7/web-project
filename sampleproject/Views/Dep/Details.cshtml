@@ -1,7 +1,7 @@
 ﻿@model sampleproject.Models.Department
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Department Details";
 }
 
 <h1>Details</h1>
@@ -31,6 +31,7 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.id" class="btn btn-sm btn-warning">Edit</a>
+    <a asp-action="Delete" asp-route-id="@Model.id" class="btn btn-sm btn-danger">Delete</a>
+    <a asp-action="Index" class="btn btn-sm btn-info">Back to List</a>
 </div>

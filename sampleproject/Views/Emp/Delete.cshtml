@@ -1,7 +1,7 @@
 ﻿@model sampleproject.Models.Employee
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Delete Employee Page";
 }
 
 <h1>Delete</h1>
@@ -45,7 +45,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Delete" class="btn btn-danger" /> 
+        <a asp-action="Index" class="btn btn-sm btn-info">Back to List</a>
     </form>
 </div>
