@@ -7,6 +7,7 @@
             <th>Salary</th>
             <th>Phone Number</th>
             <th>Age</th>
+            <th>Image Name</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -18,6 +19,7 @@
                     <td>@employee.Salary</td>
                     <td>@employee.phoneNumber</td>
                     <td>@employee.age</td>
+                    <td>@employee.image</td>
                     <td>
                     <a asp-action="Edit" asp-route-id="@employee.id" class="btn btn-sm btn-warning">Edit</a>
                     <a asp-action="Details" asp-route-id="@employee.id" class="btn btn-sm btn-info">Details</a>
