@@ -55,7 +55,7 @@
 
                 // AJAX request to search departments
                 $.ajax({
-                    url: '@Url.Action("Search", "Dep")', // Adjust controller/action as needed
+                    url: '@Url.Action("Search", "Dep")', 
                     type: 'GET',
                     data: { searchTerm: searchTerm },
                     success: function (result) {
