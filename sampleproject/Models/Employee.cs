@@ -8,7 +8,8 @@ namespace sampleproject.Models
 {
     public class Employee
     {
-        
+        [Required]
+        [Display(Name = "Employee ID")]
         public int id { get; set; }
 
         [Required]
@@ -29,7 +30,7 @@ namespace sampleproject.Models
         public int age { get; set; }
 
         [Required]
-        [Display(Name = "Image Name e.g (img.png)")]
+        [Display(Name = "Image Name")]
         public string image { get; set; }
     }
 }

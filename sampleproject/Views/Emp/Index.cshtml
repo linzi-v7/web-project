@@ -20,6 +20,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th>@Html.DisplayNameFor(model => model.FirstOrDefault().id)</th>
                 <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Name)</th>
                 <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Salary)</th>
                 <th>@Html.DisplayNameFor(model => model.FirstOrDefault().phoneNumber)</th>
@@ -32,6 +33,7 @@
             @foreach (var employee in Model)
             {
                 <tr>
+                    <td>@Html.DisplayFor(modelItem => employee.id)</td>
                     <td>@Html.DisplayFor(modelItem => employee.Name)</td>
                     <td>@Html.DisplayFor(modelItem => employee.Salary)</td>
                     <td>@Html.DisplayFor(modelItem => employee.phoneNumber)</td>

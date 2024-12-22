@@ -4,6 +4,8 @@ namespace sampleproject.Models
 {
     public class Department
     {
+        [Required]
+        [Display(Name = "Department ID")]
         public int id { get; set; }
 
         [Required]
